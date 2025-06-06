@@ -1,0 +1,45 @@
+<div class="text-right">
+  <button routerLink="/users/new">Add User</button>
+  
+</div>
+
+
+<div class="user-list">
+  <h2>User List</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Password</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.firstname}}</td>
+        <td>{{ user.lastname}}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.contact }}</td>
+        <td>{{ user.password}}</td>
+      
+        <td>
+          <div class="action-buttons">
+            <button class="edit-btn" [routerLink]="['/users/edit']" [queryParams]="{ id: user.id }">Edit</button>
+            <button (click)="deleteUser(user.id)" class="delete-btn">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>

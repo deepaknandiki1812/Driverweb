@@ -1,0 +1,264 @@
+.driver-list {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #f0f4f8;
+    border-radius: 8px;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+  
+      th, td {
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+  
+      thead {
+        background-color: #1976d2;
+        color: white;
+      }
+  
+      tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+      
+      
+      
+    }
+    
+  }
+  .text-right{
+    text-align: right !important;
+    
+    
+   
+} 
+.edit-btn,
+.delete-btn {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  min-width: 70px;
+}
+
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color:  #c82333;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+.action-buttons {
+  display: flex;
+  gap: 8px; 
+}
+.add-driver-btn {
+  background-color: #8c00ff; /* Bootstrap Blue */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-driver-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+th {
+  text-align: center !important;
+}
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem; /* add some space above */
+}
+
+   .driver-search-container {
+  max-width: 900px;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.driver-label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  min-width: 60px;
+}
+
+.driver-search-input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.driver-search-input:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+.add-driver-btn-container {
+  margin-left: auto; /* This pushes the button to the right */
+}
+
+.add-driver-btn {
+  background-color: #8c00ff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.add-driver-btn:hover {
+  background-color: #7a00e0;
+} 
+.driver-list-container {
+  padding: 20px;
+}
+
+.photo-container {
+  width: 100px;
+  text-align: center;
+}
+
+.driver-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.photo-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.upload-btn {
+  padding: 2px 8px;
+  font-size: 12px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Keep your existing button styles */
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #2196F3;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+.driver-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.driver-photo, .default-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+/* Keep your existing styles */
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #2196F3;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,85 @@
+<!-- <div class="driver-list">
+    <h2>Driver List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Vehicle Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let driver of drivers">
+          <td>{{ driver.id }}</td>
+          <td>{{ driver.name }}</td>
+          <td>{{ driver.email }}</td>
+          <td>{{ driver.address }}</td>
+          <td>{{ driver.vehicleNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+ <div class="text-right">
+   <input
+    id="driver-search"
+    type="text"
+    [(ngModel)]="searchText"
+    (input)="applyFilter()"
+    placeholder="Search by"
+    class="driver-search-input"
+  />
+  <button routerLink="/drivers/new" class="add-driver-btn">Add Driver</button>
+  <!-- <button (click)="logout()">Logout</button> -->
+  
+</div>
+
+<div class="driver-list">
+  <h2>Driver List</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Photo</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Vehicle Number</th>
+        <th>Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let driver of filteredDrivers | paginate: { itemsPerPage: 5, currentPage: page }">
+        <td>
+          <div class ="driver-photo-container">
+            <img src="assets/images/Truck.png" width="50" height="50" />
+            <!-- <img [src]="driver.photoUrl" width="50" height="50" /> -->
+            
+
+          </div>
+        </td>
+        <td>{{ driver.id }}</td>
+        <td>{{ driver.name }}</td>
+        <td>{{ driver.email }}</td>
+        <td>{{ driver.address }}</td>
+        <td>{{ driver.vehicleNumber }}</td>
+        <td class="action-buttons">
+          <button class="edit-btn" [routerLink]="['/drivers/edit']" [queryParams]="{ id: driver.id }">Edit</button>
+          <button class="delete-btn" (click)="driver.id && deleteDriver(driver.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-wrapper">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
+
+  
+  
+  

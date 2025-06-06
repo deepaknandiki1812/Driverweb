@@ -1,0 +1,78 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="logo">
+      <!-- Just static src, no need [] binding -->
+      <img src="assets/images/iconma_Logo.jpg" alt="Company Logo">    
+    </div>
+    
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Please sign in to continue</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input 
+          id="username" 
+          type="text" 
+          formControlName="username" 
+          placeholder="Enter your username or email"
+          [class.invalid]="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+        <div class="error" *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+          Username is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input">
+          <input 
+            id="password" 
+            [type]="showPassword ? 'text' : 'password'" 
+            formControlName="password" 
+            placeholder="Enter your password"
+            [class.invalid]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" aria-label="Toggle password visibility">
+            <i class="material-icons">{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
+          </button>
+        </div>
+        <div class="error" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <div class="remember-forgot">
+        <label class="remember-me">
+          <input type="checkbox" formControlName="rememberMe">
+          <span>Remember me</span>
+        </label>
+        <a routerLink="/forgot-password" class="forgot-password">Forgot password?</a>
+      </div>
+
+    <button type="submit" [disabled]="loginForm.invalid || isLoading">
+  <span *ngIf="!isLoading">Sign In</span>
+  <span *ngIf="isLoading" class="spinner"></span>
+</button>
+
+
+      <div class="error-message" *ngIf="errorMessage">
+        <i class="material-icons">error_outline</i>
+        {{ errorMessage }}
+      </div>
+
+      <div class="divider">or</div>
+
+      <div class="social-login">
+        <button type="button" class="google-btn" (click)="loginWithGoogle()">
+          <button (click)="testClick()">Test Click</button>
+
+          <img src="assets/images/google.png" alt="Google">
+          Continue with Google
+        </button>
+      </div>
+
+      <div class="register-link">
+        Don't have an account? <a routerLink="/register">Sign up</a>
+      </div>
+    </form>
+  </div>
+</div>

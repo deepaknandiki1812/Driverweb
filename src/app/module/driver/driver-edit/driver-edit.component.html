@@ -1,0 +1,56 @@
+<div class="driver-edit-container">
+  <h2>Edit Driver</h2>
+
+  <!-- Display the ID (readonly, not part of the form) -->
+  <div class="form-group">
+    <label for="driverId">ID</label>
+    <input id="driverId" [value]="driverId" readonly />
+  </div>
+
+  <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" placeholder="Enter name" />
+      <div class="error" *ngIf="isSubmitted && driverForm.controls['name'].invalid">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="vehicleNumber">Vehicle Number</label>
+      <input id="vehicleNumber" formControlName="vehicleNumber" placeholder="Enter vehicle number" />
+      <div class="error" *ngIf="isSubmitted && driverForm.controls['vehicleNumber'].invalid">
+        Vehicle number is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" placeholder="Enter email" />
+      <div class="error" *ngIf="isSubmitted && driverForm.controls['email'].invalid">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" formControlName="address" placeholder="Enter address" />
+      <div class="error" *ngIf="isSubmitted && driverForm.controls['address'].invalid">
+        Address is required.
+      </div>
+    </div>
+
+    <!-- Submit button disabled if form is invalid -->
+    <button type="submit" [disabled]="driverForm.invalid">Submit</button>
+  </form>
+
+  <!-- Success message after form submission -->
+  <div *ngIf="isSubmitted && driverForm.valid" class="success-message">
+    Driver information updated successfully!
+  </div>
+
+  <!-- Error message if something goes wrong -->
+  <div *ngIf="isSubmitted && !driverForm.valid" class="error-message">
+    There was an issue updating the driver. Please try again.
+  </div>
+</div>

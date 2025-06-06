@@ -1,0 +1,41 @@
+<div class="text-right">
+  <button routerLink="/customers/new">Add Customer</button>
+</div>
+
+
+<div class="customer-list">
+ 
+    <h2>Customer List</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>contact</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.id }}</td>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.address }}</td>
+          <td>{{ customer.contact }}</td>
+
+         
+                <td> <div class="action-buttons">
+                   <button class="edit-btn" [routerLink]="['/customers/edit']" [queryParams]="{ id: customer.id }">Edit</button>
+               <button (click)="deleteCustomer(customer.id)" class="delete-btn">Delete</button>
+                </div>
+              </td>
+         
+        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

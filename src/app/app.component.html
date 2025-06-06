@@ -1,0 +1,27 @@
+<!-- app.component.html -->
+<header class="app-header">
+  <div class="container header-content">
+    <h1 class="app-title">{{ title }}</h1>
+    <nav class="app-nav">
+      <a routerLink="/drivers" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >Driver </a>
+      <!-- <a routerLink="/drivers/new" routerLinkActive="active-link" class="add-driver-btn">Add Driver</a> -->
+      
+      <a routerLink="/customers" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Customer </a>
+      <!-- <a routerLink="/customers/new" routerLinkActive="active-link" class="add-Customer-btn">Add Customer</a> -->
+
+     <a routerLink="/users" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">User </a>
+      
+     <a routerLink="/login" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">LogOut </a>
+    </nav>
+  </div>
+</header>
+
+<main class="app-main container">
+  <router-outlet></router-outlet>
+</main>
+<footer class="app-footer">
+  <div class="container">
+    <p>© 2025 Driver Management System</p>
+  </div>
+</footer>
+

@@ -1,0 +1,72 @@
+.customer-list {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #f0f4f8;
+    border-radius: 8px;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+  
+      th, td {
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+  
+      thead {
+        background-color: #1976d2;
+        color: white;
+      }
+  
+      tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+    }
+  }
+  .text-right{
+    text-align: right !important;
+   
+}
+.edit-btn,
+.delete-btn {
+  font-size: 14px;
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  min-width: 70px;
+}
+
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color:  #c82333;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+.action-buttons {
+  display: flex;
+  gap: 8px; 
+}

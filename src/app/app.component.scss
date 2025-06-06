@@ -1,0 +1,79 @@
+/* app.component.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .app-header {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  .app-title {
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .app-nav {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .app-nav a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .app-nav a:hover,
+  .active-link {
+    color: #ffd700;
+  }
+  
+  .app-main {
+    background-color: #ffffff;
+    padding: 20px;
+    min-height: 60vh;
+  }
+  
+  .app-footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+  }
+
+  .app-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px; 
+  }
+  .app-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  .app-nav a:hover {
+    background-color: #1565c0;
+  }
+  
+  
+
+  

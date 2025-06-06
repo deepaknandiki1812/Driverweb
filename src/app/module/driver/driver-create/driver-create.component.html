@@ -1,0 +1,202 @@
+<div class="driver-form">
+  <div class="form-header">
+    <h2>Driver Information</h2>
+    <button routerLink="/drivers" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" class="driver-list-btn">
+      Driver List
+    </button>
+  </div>
+
+  <form [formGroup]="driverForm" (ngSubmit)="onSubmit()"> 
+    <!-- <div class="form-field">
+      <label for="id">ID:</label>
+      <input type="number" id="id" formControlName="id" />
+      <div *ngIf="driverForm.get('id')?.invalid && driverForm.get('id')?.touched">
+        <small class="error-message">ID is required.</small>
+      </div>
+    </div> -->
+
+    <!-- <div class="form-field">
+      <label for="name">*Name:</label>
+      <input type="text" id="name" formControlName="name" />
+      <div *ngIf="driverForm.get('name')?.invalid && driverForm.get('name')?.touched">
+        <small class="error-message" *ngIf="driverForm.get('name')?.hasError('required')">Name is required.</small>
+        <small class="error-message" *ngIf="driverForm.get('name')?.hasError('minlength')">Name should be at least 2 characters.</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">*Email:</label>
+      <input type="email" id="email" formControlName="email" />
+      <div *ngIf="driverForm.get('email')?.invalid && driverForm.get('email')?.touched">
+        <small class="error-message" *ngIf="driverForm.get('email')?.hasError('required')">Email is required.</small>
+        <small class="error-message" *ngIf="driverForm.get('email')?.hasError('email')">Enter a valid email.</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="address">*Address:</label>
+      <input type="text" id="address" formControlName="address" />
+      <div *ngIf="driverForm.get('address')?.invalid && driverForm.get('address')?.touched">
+        <small class="error-message">Address is required.</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="vehicleNumber">*Vehicle Number:</label>
+      <input type="text" id="vehicleNumber" formControlName="vehicleNumber" />
+      <div *ngIf="driverForm.get('vehicleNumber')?.invalid && driverForm.get('vehicleNumber')?.touched">
+        <small class="error-message">Vehicle Number is required.</small>
+      </div>
+    </div>
+
+
+       <div class="form-field">
+  <label for="joindate">*Join Date:</label>
+  <input type="date" id="joindate" formControlName="joindate" />
+  <div *ngIf="driverForm.get('joindate')?.invalid && driverForm.get('joindate')?.touched">
+    <small class="error-message">Join Date is required.</small>
+  </div>
+</div>
+
+
+
+   <div class="form-field">
+  <label for="image">*Image:</label> 
+
+  
+   <input type="file" (change)="onImageSelected($event)" />
+
+  <button type="button" (click)="fileInput.click()">Choose File</button>
+
+  <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+  <div *ngIf="imagePreview" class="image-preview">
+    <img [src]="imagePreview" alt="Image Preview" width="150" />
+  </div>
+
+  <div *ngIf="driverForm.get('image')?.invalid && driverForm.get('image')?.touched">
+    <small class="error-message">Driver Image is required.</small>
+  </div>
+</div> 
+
+
+
+       <div class="form-field">
+      <label for="vehicletype">*Vehicle Type:</label>
+      <input type="text" id="vehicletype" formControlName="vehicletype" />
+      <div *ngIf="driverForm.get('vehicletype')?.invalid && driverForm.get('vehicletype')?.touched">
+        <small class="error-message">vehicletype is required.</small>
+      </div>
+    </div>
+
+    <div class="form-field">
+  <label for="licence">*Licence:</label>
+<input type="file" (change)="onLicenceSelected($event)" />
+  <div *ngIf="driverForm.get('licence')?.invalid && driverForm.get('licence')?.touched">
+    <small class="error-message">Driver licence is required.</small>
+  </div>
+</div> -->
+<!-- 
+ <div class="form-field">
+    <label for="licence">*Licence:</label>
+   <input type="file" (change)="onLicenceSelected($event)" />
+
+  </div> -->
+
+<!-- <div class="form-field">
+  <label class="status-label">*Status:</label>
+  <div class="radio-status-row">
+    <div class="status-option">
+      <span>Active</span>
+      <input type="radio" name="status" formControlName="isActive" value="true" />
+    </div>
+    <div class="status-option">
+      <span>Inactive</span>
+      <input type="radio" name="status" formControlName="isActive" value="false" />
+    </div>
+  </div> -->
+
+
+
+  <!-- <div *ngIf="driverForm.get('isActive')?.invalid && driverForm.get('isActive')?.touched">
+    <small class="error-message">Status is required.</small>
+  </div> -->
+<!-- </div>
+
+
+
+    
+
+    <button type="submit">Submit</button>
+  </form>
+</div> -->
+
+
+
+<form [formGroup]="driverForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <div class="form-field">
+    <label for="name">*Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="driverForm.get('name')?.touched && driverForm.get('name')?.invalid">
+      <small class="error-message">Name is required.</small>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="email">*Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <div *ngIf="driverForm.get('email')?.touched && driverForm.get('email')?.invalid">
+      <small class="error-message">Valid email is required.</small>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="address">*Address:</label>
+    <input type="text" id="address" formControlName="address" />
+  </div>
+
+  <div class="form-field">
+    <label for="vehicleNumber">*Vehicle Number:</label>
+    <input type="text" id="vehicleNumber" formControlName="vehicleNumber" />
+  </div>
+
+  <div class="form-field">
+    <label for="joindate">*Join Date:</label>
+    <input type="date" id="joindate" formControlName="joindate" />
+  </div>
+
+  <div class="form-field">
+    <label for="vehicletype">*Vehicle Type:</label>
+    <input type="text" id="vehicletype" formControlName="vehicletype" />
+  </div>
+
+  <div class="form-field">
+    <label for="image">*Image:</label>
+    <input type="file" id="image" #fileInput (change)="onImageSelected($event)" />
+    <button type="button" (click)="fileInput.click()">Choose File</button>
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Image Preview" width="150" />
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="licence">*Licence:</label>
+    <input type="file" id="licence" (change)="onLicenceSelected($event)" />
+  </div>
+
+  <div class="form-field">
+    <label class="status-label">*Status:</label>
+    <div class="radio-status-row">
+      <label>
+        <input type="radio" formControlName="isActive" [value]="true" />
+        Active
+      </label>
+      <label>
+        <input type="radio" formControlName="isActive" [value]="false" />
+        Inactive
+      </label>
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+

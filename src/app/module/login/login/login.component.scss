@@ -1,0 +1,187 @@
+/* Centering the login container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Login card styling */
+.login-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Logo styling */
+.logo img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+/* Headings */
+.login-card h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 24px;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Form group */
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.3s ease;
+  box-sizing: border-box;
+}
+
+input.invalid {
+  border-color: #e74c3c;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Password toggle */
+.password-input {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.material-icons {
+  font-size: 20px;
+}
+
+/* Remember me + forgot password */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Submit button */
+button[type="submit"] {
+  background: #007bff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background: #a4c7f5;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-message {
+  background: #ffe6e6;
+  color: #d8000c;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Divider */
+.divider {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin: 10px 0;
+}
+
+/* Social login */
+.google-btn {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.google-btn img {
+  width: 50px;
+  height: 30px;
+}
+
+/* Register link */
+.register-link {
+  font-size: 15px;
+  margin-top: 16px;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}

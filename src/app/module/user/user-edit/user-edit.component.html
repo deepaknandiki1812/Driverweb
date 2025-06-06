@@ -1,0 +1,72 @@
+<div class="user-edit-container">
+  <h2>Edit User</h2>
+
+  <!-- Display the ID (readonly) -->
+  <div class="form-group">
+    <label for="userId">ID</label>
+    <input id="userId" [value]="userId" readonly />
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input id="firstname" formControlName="firstname" placeholder="Enter first name" />
+      <div class="error" *ngIf="isSubmitted && userForm.controls['firstname'].invalid">
+        First name is required.
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input id="lastname" formControlName="lastname" placeholder="Enter last name" />
+      <div class="error" *ngIf="isSubmitted && userForm.controls['lastname'].invalid">
+        Last name is required.
+      </div>
+    </div>
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="Enter password" />
+      <div class="error" *ngIf="isSubmitted && userForm.controls['password'].invalid">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <!-- Existing Fields -->
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input id="contact" formControlName="contact" placeholder="Enter contact" />
+      <div class="error" *ngIf="isSubmitted && userForm.controls['contact'].invalid">
+        Contact is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" placeholder="Enter email" />
+      <div class="error" *ngIf="isSubmitted && userForm.controls['email'].invalid">
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" formControlName="address" placeholder="Enter address" />
+      <div class="error" *ngIf="isSubmitted && userForm.controls['address'].invalid">
+        Address is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="userForm.invalid">Submit</button>
+  </form>
+
+  <!-- Messages -->
+  <div *ngIf="isSubmitted && userForm.valid" class="success-message">
+    User updated successfully!
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>
