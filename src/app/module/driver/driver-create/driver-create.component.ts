@@ -17,6 +17,8 @@ export class DriverCreateComponent implements OnInit {
   selectedImage: File | null = null;
   selectedLicence: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+selectedFile: any;
+fileInput: any;
 
   constructor(
     private fb: FormBuilder,
@@ -31,9 +33,9 @@ export class DriverCreateComponent implements OnInit {
       vehicleNumber: ['', Validators.required],
       joindate: ['', Validators.required],
       vehicletype: ['', Validators.required],
-      isActive: [null, Validators.required],
-      image: [null, Validators.required],
-      licence: [null, Validators.required]
+      status: [null, Validators.required],
+      // image: [null, Validators.required],
+      // licence: [null, Validators.required]
     });
   }
 
@@ -56,73 +58,51 @@ export class DriverCreateComponent implements OnInit {
       this.selectedLicence = input.files[0];
     }
   }
+// Component example
+onSubmit():void {debugger;
+ if (this.driverForm.valid) {
+       const DriverDetails = this.createFormData();
+       this.subscribeToSaveResponse(this.driverService.addDriver(DriverDetails));
+     } else {
+       this.driverForm.markAllAsTouched();
+     }
+   }
 
-  onSubmit(): void {debugger;
-    if (this.driverForm.invalid) {
-      alert('Please fill out all required fields');
-      return;
-    }
+ 
+   createFormData(): Driver {
+     return {
+       ...new DriverDetails(),
+      //  id: this.driverForm.get(['id'])!.value,
+       name: this.driverForm.get(['name'])!.value,
+       email: this.driverForm.get(['email'])!.value,
+       address: this.driverForm.get(['address'])!.value,
+       vehicleNumber: this.driverForm.get(['vehicleNumber'])!.value,
+       joindate:this.driverForm.get(['joindate'])!.value,
+       vehicletype:this.driverForm.get(['vehicletype'])!.value,
+       status:this.driverForm.get(['status'])!.value,
+     };
+   }
 
-    const formData = new FormData();
 
-    // Append text fields
-    Object.keys(this.driverForm.controls).forEach(key => {
-      if (key !== 'image' && key !== 'licence') {
-        formData.append(key, this.driverForm.get(key)?.value);
-      }
-    });
+  
+  
+  protected subscribeToSaveResponse(result: any): void {
+    result.subscribe(
+      () => this.onSaveSuccess(),
+      () => this.onSaveError()
+    );
+  }
 
-    // Append files
-    if (this.selectedImage) {
-      formData.append('image', this.selectedImage, this.selectedImage.name);
-    } else {
-      alert('Please select an image');
-      return;
-    }
+  protected onSaveSuccess(): void {
+    alert('Customer info submitted successfully!');
+    this.previousState();
+  }
 
-    if (this.selectedLicence) {
-      formData.append('licence', this.selectedLicence, this.selectedLicence.name);
-    } else {
-      alert('Please select a licence file');
-      return;
-    }
+  protected onSaveError(): void {
+    alert('Failed to submit customer info.');
+  }
 
-    // Send to backend
-    this.driverService.addDriver(formData).subscribe({
-      next: (res) => {
-        console.log('Driver added successfully:', res);
-        // Optionally reset the form here
-        this.driverForm.reset();
-        this.selectedImage = null;
-        this.selectedLicence = null;
-        this.imagePreview = null;
-      },
-      error: (err) => {
-        console.error('Error adding driver:', err);
-      }
-    });
+  previousState(): void {
+    window.history.back();
   }
 }
-  // previousState(): void {
-  //   window.history.back();
-  // }
-
-  // protected subscribeToSaveResponse(
-  //   result: any
-  // ): void {
-  //   result.subscribe(
-  //     () => this.onSaveSuccess(),
-  //     () => this.onSaveError()
-  //   );
-  // }
-
-  // protected onSaveSuccess(): void {
-  //   // this.isSaving = false;
-  //   this.previousState();
-  // }
-
-  // protected onSaveError(): void {
-  //   // this.isSaving = false;
-  // }
-
-

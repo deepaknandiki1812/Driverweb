@@ -7,15 +7,15 @@
   </div>
 
   <form [formGroup]="driverForm" (ngSubmit)="onSubmit()"> 
-    <!-- <div class="form-field">
+    <div class="form-field">
       <label for="id">ID:</label>
       <input type="number" id="id" formControlName="id" />
       <div *ngIf="driverForm.get('id')?.invalid && driverForm.get('id')?.touched">
         <small class="error-message">ID is required.</small>
       </div>
-    </div> -->
+    </div> 
 
-    <!-- <div class="form-field">
+    <div class="form-field">
       <label for="name">*Name:</label>
       <input type="text" id="name" formControlName="name" />
       <div *ngIf="driverForm.get('name')?.invalid && driverForm.get('name')?.touched">
@@ -50,14 +50,19 @@
     </div>
 
 
-       <div class="form-field">
+    <!-- <div class="form-field">
   <label for="joindate">*Join Date:</label>
   <input type="date" id="joindate" formControlName="joindate" />
   <div *ngIf="driverForm.get('joindate')?.invalid && driverForm.get('joindate')?.touched">
     <small class="error-message">Join Date is required.</small>
   </div>
-</div>
+</div> -->
 
+<!-- Join Date -->
+<div class="form-field">
+  <label for="joindate">*Join Date:</label>
+  <input type="date" id="joindate" formControlName="joindate" />
+</div>
 
 
    <div class="form-field">
@@ -66,7 +71,7 @@
   
    <input type="file" (change)="onImageSelected($event)" />
 
-  <button type="button" (click)="fileInput.click()">Choose File</button>
+  <!-- <button type="button" (click)="fileInput.click()">Choose File</button> -->
 
   <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
   <div *ngIf="imagePreview" class="image-preview">
@@ -79,14 +84,30 @@
 </div> 
 
 
+<!-- <div class="form-field">
+  <label for="vehicletype">*Vehicle Type:</label>
+  <select id="vehicletype" formControlName="vehicletype">
+    <option value="">-- Select Vehicle Type --</option>
+    <option value="Van">Van</option>
+    <option value="Car">Car</option>
+    <option value="Bus">Bus</option>
+  </select>
+  <div *ngIf="driverForm.get('vehicletype')?.invalid && driverForm.get('vehicletype')?.touched">
+    <small class="error-message">Vehicle Type is required.</small>
+  </div>
+</div> -->
 
-       <div class="form-field">
-      <label for="vehicletype">*Vehicle Type:</label>
-      <input type="text" id="vehicletype" formControlName="vehicletype" />
-      <div *ngIf="driverForm.get('vehicletype')?.invalid && driverForm.get('vehicletype')?.touched">
-        <small class="error-message">vehicletype is required.</small>
-      </div>
-    </div>
+
+<!-- Vehicle Type -->
+<div class="form-field">
+  <label for="vehicletype">*Vehicle Type:</label>
+  <select id="vehicletype" formControlName="vehicletype">
+    <option value="">-- Select Vehicle Type --</option>
+    <option value="Van">Van</option>
+    <option value="Car">Car</option>
+    <option value="Bus">Bus</option>
+  </select>
+</div>
 
     <div class="form-field">
   <label for="licence">*Licence:</label>
@@ -94,7 +115,25 @@
   <div *ngIf="driverForm.get('licence')?.invalid && driverForm.get('licence')?.touched">
     <small class="error-message">Driver licence is required.</small>
   </div>
-</div> -->
+</div> 
+
+
+
+<div class="form-field">
+  <label class="status-label">*Status:</label>
+  <div class="radio-status-row">
+    <label>
+      <input type="radio" formControlName="status" [value]="true" />
+      Active
+    </label>
+    <label>
+      <input type="radio" formControlName="status" [value]="false" />
+      Inactive
+    </label>
+  </div>
+</div>
+
+ <button type="submit">Submit</button>
 <!-- 
  <div class="form-field">
     <label for="licence">*Licence:</label>
@@ -107,17 +146,17 @@
   <div class="radio-status-row">
     <div class="status-option">
       <span>Active</span>
-      <input type="radio" name="status" formControlName="isActive" value="true" />
+      <input type="radio" name="status" formControlName="status" value="true" />
     </div>
     <div class="status-option">
       <span>Inactive</span>
-      <input type="radio" name="status" formControlName="isActive" value="false" />
+      <input type="radio" name="status" formControlName="status" value="false" />
     </div>
   </div> -->
 
 
 
-  <!-- <div *ngIf="driverForm.get('isActive')?.invalid && driverForm.get('isActive')?.touched">
+  <!-- <div *ngIf="driverForm.get('status')?.invalid && driverForm.get('status')?.touched">
     <small class="error-message">Status is required.</small>
   </div> -->
 <!-- </div>
@@ -128,7 +167,7 @@
 
     <button type="submit">Submit</button>
   </form>
-</div> -->
+</div>
 
 
 
@@ -187,16 +226,16 @@
     <label class="status-label">*Status:</label>
     <div class="radio-status-row">
       <label>
-        <input type="radio" formControlName="isActive" [value]="true" />
+        <input type="radio" formControlName="status" [value]="true" />
         Active
       </label>
       <label>
-        <input type="radio" formControlName="isActive" [value]="false" />
+        <input type="radio" formControlName="status" [value]="false" />
         Inactive
       </label>
     </div>
   </div>
 
   <button type="submit">Submit</button>
-</form>
+</form> -->
 

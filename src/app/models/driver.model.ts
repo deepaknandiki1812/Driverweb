@@ -1,3 +1,7 @@
+// import { Moment } from "moment";
+import { Timestamp } from "rxjs";
+
+
 export interface Driver {
 Join: any;
 photoUrl: any;
@@ -6,11 +10,11 @@ photoUrl: any;
   email?: string;
   address?: string;
   vehicleNumber?: string;
-  joindate?: Date;
-  image?: Blob[];
+  joindate?: Timestamp<Date>;
+  // image?: Blob[];
   vehicletype?:string;
-  licence?:string;
-  status?:string;
+  // licence?:string;
+  status?:Boolean;
 
  // photoUrl?: string;
 }
@@ -22,11 +26,11 @@ export class DriverDetails implements Driver{
   public email?: string,
   public address?: string,
   public vehicleNumber?: string,
-  public joindate?: Date,
-  public image?: Blob[],
+  public joindate?: Timestamp<Date>,
+  // public image?: Blob[],
   public vehicletype?:string,
-  public licence?:string,
-  public status?:string,
+  // public licence?:string,
+  public status?:Boolean,
   //public photoUrl?: string
 ){}
   Join: any;
