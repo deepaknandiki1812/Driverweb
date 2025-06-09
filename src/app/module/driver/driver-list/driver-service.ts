@@ -27,8 +27,8 @@ export class DriverService {
 updateDriver(driverData: Driver): Observable<Driver> {
   return this.http.put<Driver>(this.apiUrl, driverData);
   }
- addDriver(driverData: Driver): Observable<Driver> {
-  return this.http.post<Driver>(this.apiUrl, driverData);
+ addDriver(formData: FormData): Observable<any> {
+  return this.http.post(this.apiUrl, formData);
 }
 
   deleteDriver(driverId: number): Observable<void> {
