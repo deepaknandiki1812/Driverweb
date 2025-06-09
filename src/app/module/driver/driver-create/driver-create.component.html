@@ -50,15 +50,6 @@
     </div>
 
 
-    <!-- <div class="form-field">
-  <label for="joindate">*Join Date:</label>
-  <input type="date" id="joindate" formControlName="joindate" />
-  <div *ngIf="driverForm.get('joindate')?.invalid && driverForm.get('joindate')?.touched">
-    <small class="error-message">Join Date is required.</small>
-  </div>
-</div> -->
-
-<!-- Join Date -->
 <div class="form-field">
   <label for="joindate">*Join Date:</label>
   <input type="date" id="joindate" formControlName="joindate" />
@@ -71,8 +62,6 @@
   
    <input type="file" (change)="onImageSelected($event)" />
 
-  <!-- <button type="button" (click)="fileInput.click()">Choose File</button> -->
-
   <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
   <div *ngIf="imagePreview" class="image-preview">
     <img [src]="imagePreview" alt="Image Preview" width="150" />
@@ -84,18 +73,7 @@
 </div> 
 
 
-<!-- <div class="form-field">
-  <label for="vehicletype">*Vehicle Type:</label>
-  <select id="vehicletype" formControlName="vehicletype">
-    <option value="">-- Select Vehicle Type --</option>
-    <option value="Van">Van</option>
-    <option value="Car">Car</option>
-    <option value="Bus">Bus</option>
-  </select>
-  <div *ngIf="driverForm.get('vehicletype')?.invalid && driverForm.get('vehicletype')?.touched">
-    <small class="error-message">Vehicle Type is required.</small>
-  </div>
-</div> -->
+
 
 
 <!-- Vehicle Type -->

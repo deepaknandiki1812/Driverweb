@@ -9,7 +9,7 @@
 
   <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Name</label>
+      <label for="name">*Name</label>
       <input id="name" formControlName="name" placeholder="Enter name" />
       <div class="error" *ngIf="isSubmitted && driverForm.controls['name'].invalid">
         Name is required.
@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group">
-      <label for="vehicleNumber">Vehicle Number</label>
+      <label for="vehicleNumber">*Vehicle Number</label>
       <input id="vehicleNumber" formControlName="vehicleNumber" placeholder="Enter vehicle number" />
       <div class="error" *ngIf="isSubmitted && driverForm.controls['vehicleNumber'].invalid">
         Vehicle number is required.
@@ -25,7 +25,7 @@
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="email">*Email</label>
       <input id="email" formControlName="email" placeholder="Enter email" />
       <div class="error" *ngIf="isSubmitted && driverForm.controls['email'].invalid">
         Valid email is required.
@@ -33,23 +33,57 @@
     </div>
 
     <div class="form-group">
-      <label for="address">Address</label>
+      <label for="address">*Address</label>
       <input id="address" formControlName="address" placeholder="Enter address" />
       <div class="error" *ngIf="isSubmitted && driverForm.controls['address'].invalid">
         Address is required.
       </div>
     </div>
 
-    <!-- Submit button disabled if form is invalid -->
-    <button type="submit" [disabled]="driverForm.invalid">Submit</button>
+     <div class="form-field">
+  <label for="joindate">*Join Date:</label>
+ <input formControlName="joindate" type="date" />
+
+</div>
+
+
+    <div class="form-field">
+  <label for="vehicletype">*Vehicle Type:</label>
+  <select id="vehicletype" formControlName="vehicletype">
+    <option value="">-- Select Vehicle Type --</option>
+    <option value="Van">Van</option>
+    <option value="Car">Car</option>
+    <option value="Bus">Bus</option>
+  </select>
+</div>
+
+<div class="form-field">
+  <label class="status-label">*Status:</label>
+  <div class="radio-status-row">
+    <label>
+      <input type="radio" formControlName="status" [value]="true" />
+      Active
+    </label>
+    <label>
+      <input type="radio" formControlName="status" [value]="false" />
+      Inactive
+    </label>
+  </div>
+</div>
+
+
+
+
+   
+    <button type="submit" >Submit</button>
   </form>
 
-  <!-- Success message after form submission -->
+
   <div *ngIf="isSubmitted && driverForm.valid" class="success-message">
     Driver information updated successfully!
   </div>
 
-  <!-- Error message if something goes wrong -->
+
   <div *ngIf="isSubmitted && !driverForm.valid" class="error-message">
     There was an issue updating the driver. Please try again.
   </div>

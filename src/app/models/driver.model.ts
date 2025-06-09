@@ -10,10 +10,10 @@ photoUrl: any;
   email?: string;
   address?: string;
   vehicleNumber?: string;
-  joindate?: Timestamp<Date>;
-  // image?: Blob[];
+  joindate?: String;
+  image?: Blob[];
   vehicletype?:string;
-  // licence?:string;
+  licence?:string;
   status?:Boolean;
 
  // photoUrl?: string;
@@ -26,10 +26,10 @@ export class DriverDetails implements Driver{
   public email?: string,
   public address?: string,
   public vehicleNumber?: string,
-  public joindate?: Timestamp<Date>,
-  // public image?: Blob[],
+  public joindate?: String,
+  public image?: Blob[],
   public vehicletype?:string,
-  // public licence?:string,
+  public licence?:string,
   public status?:Boolean,
   //public photoUrl?: string
 ){}

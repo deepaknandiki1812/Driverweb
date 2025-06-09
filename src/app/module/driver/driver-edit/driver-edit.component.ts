@@ -30,7 +30,7 @@ export class DriverEditComponent  {
     this.route.queryParams.subscribe(params => {
       this.driverId = params['id']; // Extract the driver id
       console.log('Editing Driver with ID:', this.driverId);
-
+      
        // Fetch driver data using the driver ID
        this.loadDriverData(this.driverId);
     });
@@ -41,34 +41,43 @@ export class DriverEditComponent  {
       name: ['', Validators.required],
       vehicleNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', Validators.required]
+      address: ['', Validators.required],
+      joindate: ['', Validators.required],
+      vehicletype: ['', Validators.required],
+      status: [null, Validators.required]
+
     });
   }
-   // Fetch driver data (this can be an API call to your service)
-   loadDriverData(driverId: string | null): void {
-    if (driverId) {
-      // Call the driver service to fetch driver data
-      this.driverService.getDriverById(+driverId).subscribe(
-        (driverData: any) => {
-          // This is the success handler
-          this.driverForm.patchValue({
-            id: driverData.id,
-            name: driverData.name,
-            vehicleNumber: driverData.vehicleNumber,
-            email: driverData.email,
-            address: driverData.address
-          });
-        },
-        (error: any) => {
-          // This is the error handler
-          console.error('Error loading driver data', error);
-        }
-      );
-    }
+loadDriverData(driverId: string | null): void {
+  if (driverId) {
+    this.driverService.getDriverById(+driverId).subscribe(
+      (driverData: any) => {
+        // ✅ Add this line here to debug response
+        console.log("API Response from backend:", driverData);
+
+        // Patch form values
+        this.driverForm.patchValue({
+          id: driverData.id,
+          name: driverData.name,
+          vehicleNumber: driverData.vehicleNumber,
+          email: driverData.email,
+          address: driverData.address,
+          joindate: driverData.joindate ? driverData.joindate.substring(0, 10) : null,
+          vehicletype: driverData.vehicletype,
+          status: driverData.status,
+        });
+      },
+      (error: any) => {
+        console.error('Error loading driver data', error);
+      }
+    );
   }
+}
+
+
 
   // Handle form submission
-  onSubmit(): void {debugger;
+  onSubmit(): void {
     this.isSubmitted = true;
      const driverdetails = this.createFormForm();
       this.subscribeToSaveResponse(this.driverService.updateDriver(driverdetails));
@@ -91,9 +100,10 @@ export class DriverEditComponent  {
     //   console.warn('Form is invalid');
     //   this.errorMessage = 'Please fill in all required fields.';
     // }
-  }
+    console.log("Submitting Driver:", this.driverForm.value);
 
-    
+
+  }
    createFormForm():Driver {
       return{
       ...new DriverDetails(),
@@ -102,6 +112,9 @@ export class DriverEditComponent  {
       email: this.driverForm.get(["email"])!.value,
       address: this.driverForm.get(["address"])!.value,
       vehicleNumber: this.driverForm.get(["vehicleNumber"])!.value,
+      joindate:this.driverForm.get(["joindate"])!.value,
+      vehicletype:this.driverForm.get(["vehicletype"])!.value,
+      status: this.driverForm.get('status')!.value 
     }
     }
 

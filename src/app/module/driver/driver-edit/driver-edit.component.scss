@@ -48,5 +48,32 @@
         background-color: #0056b3;
       }
     }
+    .form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-field input[type="date"] {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-field input[type="date"]:focus {
+  border-color: #007bff;
+}
+
   }
+  
+  
   

@@ -66,7 +66,11 @@ onSubmit():void {debugger;
      } else {
        this.driverForm.markAllAsTouched();
      }
+     
+  const formValues = this.driverForm.value;
+  const formData = new FormData();
    }
+   
 
  
    createFormData(): Driver {
@@ -81,7 +85,10 @@ onSubmit():void {debugger;
        vehicletype:this.driverForm.get(['vehicletype'])!.value,
        status:this.driverForm.get(['status'])!.value,
      };
+     
+     
    }
+   
 
 
   
