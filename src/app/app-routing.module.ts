@@ -11,6 +11,7 @@ import { UserListComponent } from './module/user/user-list/user-list.component';
 import { UserCreateComponent } from './module/user/user-create/user-create.component';
 import { UserEditComponent } from './module/user/user-edit/user-edit.component';
 import { LoginComponent } from './module/login/login/login.component';
+import { DriverViewComponent } from './module/driver/driver-view/driver-view.component';
 
 
 const routes: Routes = [
@@ -30,10 +31,8 @@ const routes: Routes = [
   {path: 'users/new', component: UserCreateComponent},
   {path: 'users/edit', component: UserEditComponent},
 
-  { path: 'register', component: UserCreateComponent },
-
-
-
+  { path: 'register', component: UserCreateComponent }, 
+   {path: 'drivers/view', component: DriverViewComponent}
 
 
   

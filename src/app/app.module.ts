@@ -47,6 +47,7 @@ import { UserCreateComponent } from './module/user/user-create/user-create.compo
 import { UserDeleteComponent } from './module/user/user-delete/user-delete.component';
 import { UserListComponent } from './module/user/user-list/user-list.component';
 import { LoginComponent } from './module/login/login/login.component';
+import { DriverViewComponent } from './module/driver/driver-view/driver-view.component';
 
 
 
@@ -66,7 +67,8 @@ import { LoginComponent } from './module/login/login/login.component';
     UserDeleteComponent,
     UserEditComponent,
     UserListComponent,
-    LoginComponent    
+    LoginComponent,
+    DriverViewComponent    
   ],
   imports: [
     BrowserModule,

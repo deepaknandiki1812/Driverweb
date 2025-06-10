@@ -68,6 +68,8 @@
         <td>{{ driver.address }}</td>
         <td>{{ driver.vehicleNumber }}</td>
         <td class="action-buttons">
+           <button class="view-btn" [routerLink]="['/drivers/view']" [queryParams]="{ id: driver.id }">👁️View</button>
+           
           <button class="edit-btn" [routerLink]="['/drivers/edit']" [queryParams]="{ id: driver.id }">Edit</button>
           <button class="delete-btn" (click)="driver.id && deleteDriver(driver.id)">Delete</button>
         </td>

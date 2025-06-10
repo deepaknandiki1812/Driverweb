@@ -46,6 +46,22 @@
 
 </div>
 
+<div class="form-field">
+  <label for="image">*Image:</label> 
+
+  
+<input type="file" (change)="onImageSelected($event)" />
+
+  <span *ngIf="selectedImageFile">{{ selectedImageFile.name }}</span>
+  <div *ngIf="imagePreview" class="image-preview">
+    <img [src]="imagePreview" alt="Image Preview" width="150" />
+  </div>
+
+  <div *ngIf="driverForm.get('image')?.invalid && driverForm.get('image')?.touched">
+    <small class="error-message">Driver Image is required.</small>
+  </div>
+</div> 
+
 
     <div class="form-field">
   <label for="vehicletype">*Vehicle Type:</label>
@@ -56,6 +72,14 @@
     <option value="Bus">Bus</option>
   </select>
 </div>
+
+<div *ngIf="driverForm.get('licence')?.value === null && imagePreview">
+  <p>Existing Licence: <a [href]="driverForm.get('licence')?.value || ''" target="_blank">View Licence</a></p>
+</div>
+
+<input type="file" (change)="onLicenceSelected($event)" /> 
+
+
 
 <div class="form-field">
   <label class="status-label">*Status:</label>

@@ -3,128 +3,143 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DriverService } from '../driver-list/driver-service';
 import { Driver, DriverDetails } from '../../../models/driver.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-driver-edit',
   templateUrl: './driver-edit.component.html',
   styleUrls: ['./driver-edit.component.scss']
 })
-export class DriverEditComponent  {
- 
+export class DriverEditComponent implements OnInit {
   driverForm!: FormGroup;
   isSubmitted = false;
   driverId: string | null = null;
-  errorMessage: string= '';
-  successMessage: string='';
+
+  selectedImageFile: File | null = null;
+  selectedLicenceFile: File | null = null;
+imagePreview: any;
+  formData: any;
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute, // Inject ActivatedRoute to read query params
-    private driverService: DriverService, // Assuming you have a service to fetch driver data
-    private router: Router // Router to navigate after update
+    private route: ActivatedRoute,
+    private driverService: DriverService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Get the 'id' query parameter from the URL
-    this.route.queryParams.subscribe(params => {
-      this.driverId = params['id']; // Extract the driver id
-      console.log('Editing Driver with ID:', this.driverId);
-      
-       // Fetch driver data using the driver ID
-       this.loadDriverData(this.driverId);
-    });
-
-    // Initialize form
     this.driverForm = this.fb.group({
-      id: [''], 
+      id: [''],
       name: ['', Validators.required],
       vehicleNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       address: ['', Validators.required],
       joindate: ['', Validators.required],
       vehicletype: ['', Validators.required],
-      status: [null, Validators.required]
+      status: [null, Validators.required],
+      imagepath: [null,Validators.required],  
+      licencepath: [null,Validators.required]
+    });
 
+    this.route.queryParams.subscribe(params => {
+      this.driverId = params['id'];
+      if (this.driverId) {
+        this.loadDriverData(this.driverId);
+      }
     });
   }
-loadDriverData(driverId: string | null): void {
-  if (driverId) {
-    this.driverService.getDriverById(+driverId).subscribe(
-      (driverData: any) => {
-        // ✅ Add this line here to debug response
-        console.log("API Response from backend:", driverData);
 
-        // Patch form values
-        this.driverForm.patchValue({
-          id: driverData.id,
-          name: driverData.name,
-          vehicleNumber: driverData.vehicleNumber,
-          email: driverData.email,
-          address: driverData.address,
-          joindate: driverData.joindate ? driverData.joindate.substring(0, 10) : null,
-          vehicletype: driverData.vehicletype,
-          status: driverData.status,
-        });
-      },
-      (error: any) => {
-        console.error('Error loading driver data', error);
-      }
-    );
+loadDriverData(driverId: string): void {
+  this.driverService.getDriverById(+driverId).subscribe(driverData => {
+    this.driverForm.patchValue({
+      id: driverData.id,
+      name: driverData.name,
+      vehicleNumber: driverData.vehicleNumber,
+      email: driverData.email,
+      address: driverData.address,
+      joindate: driverData.joindate ? driverData.joindate.substring(0, 10) : null,
+      vehicletype: driverData.vehicletype,
+      status: driverData.status,
+      
+    });
+
+    // 👇 Set preview values for use in HTML
+    this.imagePreview = driverData.image;
+    this.driverForm.get('licence')?.setValue(null);
+  });
+
+
+
+
+
+      // Optionally set previews or handle existing images if needed
+    
+  }
+
+onImageSelected(event: Event): void {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    this.selectedImageFile = file;
+    this.driverForm.patchValue({ image: file });
+    this.driverForm.get('image')?.updateValueAndValidity();
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 }
 
-
-
-  // Handle form submission
-  onSubmit(): void {
-    this.isSubmitted = true;
-     const driverdetails = this.createFormForm();
-      this.subscribeToSaveResponse(this.driverService.updateDriver(driverdetails));
-    // if (this.driverForm.valid) {
-    //   // Call the service to update the driver
-    //   this.driverService.updateDriver(this.driverForm.value).subscribe(
-    //     (response) => {
-    //       console.log('Driver updated successfully:', response);
-    //       this.successMessage = 'Driver updated successfully!';
-    //       this.errorMessage = '';  // Clear any previous error messages
-    //       this.router.navigate(['/drivers']); // Navigate back to the driver list
-    //     },
-    //     (error) => {
-    //       console.error('Error updating driver:', error);
-    //       this.successMessage = '';  // Clear any previous success messages
-    //       this.errorMessage = 'There was an error loading the driver data.';
-    //     }
-    //   );
-    // } else {
-    //   console.warn('Form is invalid');
-    //   this.errorMessage = 'Please fill in all required fields.';
-    // }
-    console.log("Submitting Driver:", this.driverForm.value);
-
-
+onLicenceSelected(event: Event): void {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (file) {
+    this.selectedLicenceFile = file;
+    this.driverForm.patchValue({ licence: file });
+    this.driverForm.get('licence')?.updateValueAndValidity();
   }
-   createFormForm():Driver {
-      return{
-      ...new DriverDetails(),
-      id: this.driverForm.get(["id"])!.value,
-      name: this.driverForm.get(["name"])!.value,
-      email: this.driverForm.get(["email"])!.value,
-      address: this.driverForm.get(["address"])!.value,
-      vehicleNumber: this.driverForm.get(["vehicleNumber"])!.value,
-      joindate:this.driverForm.get(["joindate"])!.value,
-      vehicletype:this.driverForm.get(["vehicletype"])!.value,
-      status: this.driverForm.get('status')!.value 
-    }
-    }
+}
 
-    previousState(): void {
-    window.history.back();
+onSubmit():void {debugger;
+   const DriverDetails = this.createFormData();
+  
+this.formData.append('driver', JSON.stringify(DriverDetails));
+       this.subscribeToSaveResponse(this.driverService.updateDriver(this.formData));
+ if (this.driverForm.valid) {
+      //  const DriverDetails = this.createFormData();
+      //  this.subscribeToSaveResponse(this.driverService.addDriver(DriverDetails));
+     } else {
+       this.driverForm.markAllAsTouched();
+     }
+}
+   
+
+ 
+createFormData(): Driver {debugger;
+  const driverDto: Driver = {
+    ...new DriverDetails(),
+    name: this.driverForm.get('name')!.value,
+    email: this.driverForm.get('email')!.value,
+    address: this.driverForm.get('address')!.value,
+    vehicleNumber: this.driverForm.get('vehicleNumber')!.value,
+    joindate: this.driverForm.get('joindate')!.value,
+    vehicletype: this.driverForm.get('vehicletype')!.value,
+    status: this.driverForm.get('status')!.value,
+  };
+
+  this.formData = new FormData();
+  
+  if (this.selectedImageFile) {
+    this.formData.append('image', this.selectedImageFile); // 👈 make sure not null
   }
+  if (this.selectedLicenceFile) {
+    this.formData.append('licence', this.selectedLicenceFile); // 👈 make sure not null
+  }
+this.driverService.updateDriver(this.formData).subscribe();
+  return driverDto;
+}
 
-  protected subscribeToSaveResponse(
-    result: any
-  ): void {
+    
+  protected subscribeToSaveResponse(result: any): void {
     result.subscribe(
       () => this.onSaveSuccess(),
       () => this.onSaveError()
@@ -132,12 +147,15 @@ loadDriverData(driverId: string | null): void {
   }
 
   protected onSaveSuccess(): void {
-    // this.isSaving = false;
+    alert('Customer info submitted successfully!');
     this.previousState();
   }
 
   protected onSaveError(): void {
-    // this.isSaving = false;
-  }
+    alert('Failed to submit customer info.');
   }
 
+  previousState(): void {
+    window.history.back();
+  }
+}

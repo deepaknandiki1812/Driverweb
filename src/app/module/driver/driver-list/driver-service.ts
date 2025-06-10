@@ -21,11 +21,11 @@ export class DriverService {
     return this.http.get<Driver[]>(this.apiUrl);
   }
  
-  getDriverById(driverId: number): Observable<Driver> {
+  getDriverById(driverId: number): Observable<any> {
     return this.http.get<Driver>(`${this.apiUrl}/${driverId}`);
   }
-updateDriver(driverData: Driver): Observable<Driver> {
-  return this.http.put<Driver>(this.apiUrl, driverData);
+updateDriver(formData: FormData): Observable<any> {
+  return this.http.put(this.apiUrl, formData);
   }
  addDriver(formData: FormData): Observable<any> {
   return this.http.post(this.apiUrl, formData);

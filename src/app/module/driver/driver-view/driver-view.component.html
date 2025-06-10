@@ -1,0 +1,54 @@
+
+<div class="driver-details-container">
+  <h2>Driver Details</h2>
+  <!-- your driver details table and button -->
+</div>
+
+
+<div *ngIf="driver; else loading">
+  <table class="driver-details-table">
+    <tr>
+      <th>ID</th>
+      <td>{{ driver.id }}</td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>{{ driver.name }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ driver.email }}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>{{ driver.address }}</td>
+    </tr>
+    <tr>
+      <th>Vehicle Number</th>
+      <td>{{ driver.vehicleNumber }}</td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td>
+        <a *ngIf="driver.image" [href]="driver.image" download="driver-image" target="_blank">
+          Download Image
+        </a>
+        <span *ngIf="!driver.image">No Image</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Licence</th>
+      <td>
+        <a *ngIf="driver.licence" [href]="driver.licence" download="driver-licence" target="_blank">
+          Download Licence
+        </a>
+        <span *ngIf="!driver.licence">No Licence</span>
+      </td>
+    </tr>
+  </table>
+  <button (click)="downloadDriverDetails()">Download Driver Details</button>
+</div>
+
+<ng-template #loading>
+  <p>Loading driver details...</p>
+</ng-template>

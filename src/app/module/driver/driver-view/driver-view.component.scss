@@ -1,0 +1,77 @@
+.driver-details-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  font-size: 14px;
+}
+
+.driver-details-container h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.driver-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.driver-details-table th,
+.driver-details-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.driver-details-table th {
+  width: 35%;
+  background-color: #f0f4f8;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.driver-details-table td a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.driver-details-table td a:hover {
+  text-decoration: underline;
+}
+
+button {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.loading-text {
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
