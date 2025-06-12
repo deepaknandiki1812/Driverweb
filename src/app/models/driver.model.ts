@@ -11,9 +11,9 @@ photoUrl: any;
   address?: string;
   vehicleNumber?: string;
   joindate?: String;
-  imagepath?: Blob[];
+  image?: Blob[];
   vehicletype?:string;
-  licencepath?:string;
+  licence?:string;
   status?:Boolean;
 
  // photoUrl?: string;
@@ -27,9 +27,9 @@ export class DriverDetails implements Driver{
   public address?: string,
   public vehicleNumber?: string,
   public joindate?: String,
-  public imagepath?: Blob[],
+  public image?: Blob[],
   public vehicletype?:string,
-  public licencepath?:string,
+  public licence?:string,
   public status?:Boolean,
   //public photoUrl?: string
 ){}

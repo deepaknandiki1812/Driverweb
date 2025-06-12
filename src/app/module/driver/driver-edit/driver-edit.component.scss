@@ -75,5 +75,30 @@
 
   }
   
-  
+  .form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.licence-actions {
+  display: flex;
+  gap: 20px;
+  margin: 5px 0;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.file-input {
+  margin-top: 8px; /* space below the links */
+}
+
   

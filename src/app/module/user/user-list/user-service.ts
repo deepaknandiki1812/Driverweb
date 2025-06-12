@@ -9,12 +9,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
- updateUser(userId: User): Observable<User> {
-    return this.http.put<User>(this.apiUrl, userId);
-    }
-  getUserById(userId: number): Observable<User> {
-   return this.http.get<User>(`${this.apiUrl}/${userId}`);
- }
+
 
 
      private apiUrl = 'http://localhost:9090/api/user'; // Mee backend URL
@@ -32,5 +27,11 @@ getUsers(): Observable<User[]> {
        login(username: string, password: string): Observable<any> {debugger;
     return this.http.get(this.apiUrl+'/login'+'/'+username+'/'+password);
   }
+   updateUser(userId: User): Observable<User> {
+    return this.http.put<User>(this.apiUrl, userId);
+    }
+  getUserById(userId: number): Observable<User> {
+   return this.http.get<User>(`${this.apiUrl}/${userId}`);
+ }
 
 }

@@ -49,8 +49,11 @@
 <div class="form-field">
   <label for="image">*Image:</label> 
 
-  
+  <img *ngIf="imagePreview" [src]="imagePreview" width="100" height="100" />
 <input type="file" (change)="onImageSelected($event)" />
+  <a [href]="imageUrl" download class="btn-link">
+  📥 Download
+</a>
 
   <span *ngIf="selectedImageFile">{{ selectedImageFile.name }}</span>
   <div *ngIf="imagePreview" class="image-preview">
@@ -70,14 +73,25 @@
     <option value="Van">Van</option>
     <option value="Car">Car</option>
     <option value="Bus">Bus</option>
+    <option value="Bike">Bike</option>
+    <option value="Truck">Truck</option>
   </select>
 </div>
 
-<div *ngIf="driverForm.get('licence')?.value === null && imagePreview">
-  <p>Existing Licence: <a [href]="driverForm.get('licence')?.value || ''" target="_blank">View Licence</a></p>
-</div>
 
-<input type="file" (change)="onLicenceSelected($event)" /> 
+<div class="form-field">
+  <label for="licence">*Licence:</label>
+      <a [href]="licenceUrl" download class="btn-link">
+  📥 Download
+</a>
+<a [href]="licenceUrl" target="_blank" class="btn-link">
+  👁️ View
+</a>
+  <div *ngIf="licenceUrl" class="licence-actions">
+  </div>
+
+  <input type="file" (change)="onLicenceSelected($event)" />
+</div>
 
 
 
@@ -100,7 +114,7 @@
 
    
     <button type="submit" >Submit</button>
-  </form>
+
 
 
   <div *ngIf="isSubmitted && driverForm.valid" class="success-message">
@@ -111,4 +125,5 @@
   <div *ngIf="isSubmitted && !driverForm.valid" class="error-message">
     There was an issue updating the driver. Please try again.
   </div>
-</div>
+
+ </form>

@@ -18,6 +18,9 @@ export class DriverEditComponent implements OnInit {
   selectedLicenceFile: File | null = null;
 imagePreview: any;
   formData: any;
+licenceUrl: string = '';
+imageUrl: string='';
+
 
   constructor(
     private fb: FormBuilder,
@@ -36,8 +39,7 @@ imagePreview: any;
       joindate: ['', Validators.required],
       vehicletype: ['', Validators.required],
       status: [null, Validators.required],
-      imagepath: [null,Validators.required],  
-      licencepath: [null,Validators.required]
+     licence: ['']
     });
 
     this.route.queryParams.subscribe(params => {
@@ -48,8 +50,9 @@ imagePreview: any;
     });
   }
 
-loadDriverData(driverId: string): void {
+loadDriverData(driverId: string): void {debugger;
   this.driverService.getDriverById(+driverId).subscribe(driverData => {
+    console.log(driverData);
     this.driverForm.patchValue({
       id: driverData.id,
       name: driverData.name,
@@ -58,11 +61,25 @@ loadDriverData(driverId: string): void {
       address: driverData.address,
       joindate: driverData.joindate ? driverData.joindate.substring(0, 10) : null,
       vehicletype: driverData.vehicletype,
+     
       status: driverData.status,
+       licence: driverData.licence || ''
       
     });
+if (driverData.licence) {
+  this.licenceUrl = `http://localhost:9090/uploads/licence/${driverData.licence}`;
+} 
 
-    // 👇 Set preview values for use in HTML
+if (driverData.image) {
+  this.imageUrl = `http://localhost:9090/uploads/image/${driverData.image}`;
+}
+
+  //  if (driverData.image) {
+  //     this.imagePreview = `http://yourserver.com/uploads/images/${driverData.image}`;
+  //   }
+  //    if (driverData.licence) {
+  //     this.licenceUrl = `uploads\e34f07ab-86f7-4ceb-aa2a-cdf64eae991f_pulsar.pdf/${driverData.licence}`;
+  //   }
     this.imagePreview = driverData.image;
     this.driverForm.get('licence')?.setValue(null);
   });
@@ -117,6 +134,7 @@ this.formData.append('driver', JSON.stringify(DriverDetails));
 createFormData(): Driver {debugger;
   const driverDto: Driver = {
     ...new DriverDetails(),
+    id: this.driverForm.get('id')!.value,
     name: this.driverForm.get('name')!.value,
     email: this.driverForm.get('email')!.value,
     address: this.driverForm.get('address')!.value,
@@ -134,7 +152,7 @@ createFormData(): Driver {debugger;
   if (this.selectedLicenceFile) {
     this.formData.append('licence', this.selectedLicenceFile); // 👈 make sure not null
   }
-this.driverService.updateDriver(this.formData).subscribe();
+
   return driverDto;
 }
 
